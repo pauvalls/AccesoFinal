@@ -64,6 +64,14 @@ public class Userexams implements Serializable {
         this.userexamsId = userexamsId;
     }
 
+    public Userexams(String userexamsUserid, Date userexamsStarttime, Date userexamsEndtime) {
+        this.userexamsUserid = userexamsUserid;
+        this.userexamsStarttime = userexamsStarttime;
+        this.userexamsEndtime = userexamsEndtime;
+    }
+
+  
+
     public Integer getUserexamsId() {
         return userexamsId;
     }

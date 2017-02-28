@@ -52,6 +52,11 @@ public class Userquestions implements Serializable {
     public Userquestions() {
     }
 
+    public Userquestions(Questions userquestionsIdquestion, Userexams userquestionsIdexam) {
+        this.userquestionsIdquestion = userquestionsIdquestion;
+        this.userquestionsIdexam = userquestionsIdexam;
+    }
+
     public Userquestions(Integer userquestionsId) {
         this.userquestionsId = userquestionsId;
     }
