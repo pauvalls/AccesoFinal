@@ -1,3 +1,8 @@
+<%@page import="Utilities.RespuestasOBJ"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="Entidades.Userdata"%>
+<%@page import="java.util.List"%>
+<%@page import="java.util.List"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -10,22 +15,17 @@
         <script src="js/j.js"></script>
     </head>
     <body>
+        <%    ArrayList<RespuestasOBJ> array = (ArrayList<RespuestasOBJ>) request.getAttribute("array");%>
         <div class="jumbotron text-center">
             <h1>Examen</h1>
               </div>
         <div class="container">
             <div class="well">
                 <div  class="row" >
-                    <form id="preguntas"  action="Correccion"  method="POST" >
-                   
-                            
-                            
-                      
-                        <input type="submit" class="btn btn-primary btn-block" value="buton" name="asd" id="send" />
-                        
-                   </form>  
+                    <h1>inicio</h1>
                     
-                    
+                    <%=   array.get(0).getPregunta()%>
+                    <h1>final</h1>
                 </div>
             </div>
             

@@ -22,7 +22,7 @@ $(document).ready(function() {
                          $("#quest"+i).append("<select class="+'form-control'+" id="+Json[i].questionsId+" name="+Json[i].questionsId+" value="+">");
                           for (var v = 0; v < Json[i].optionsList.length; v++) {
                               
-                        $("#"+Json[i].questionsId).append("<option name="+$id+" value="+v+">"+Json[i].optionsList[v].optionsOption+"</option>");
+                        $("#"+Json[i].questionsId).append("<option name="+$id+" value="+Json[i].optionsList[v].optionsOption+" > "+Json[i].optionsList[v].optionsOption.toString()+"</option>");
                     }
                     $("#quest"+i).append( "</select></div></br> ");
                 
@@ -33,7 +33,7 @@ $(document).ready(function() {
                      $("#preguntas").append("<div id=quest"+i+" class="+'form-group'+ " ><p class="+'lead'+">"+Json[i].questionsTitle+"</p></br>");
                           for (var v = 0; v < Json[i].optionsList.length; v++) {
                         //      alert(Json[i].optionsList[v].optionsOption)
-                        $("#quest"+i).append("<input type="+'radio'+"  name="+$id+" value="+v+">"+Json[i].optionsList[v].optionsOption+"</div></br> ");
+                        $("#quest"+i).append("<input type="+'radio'+"  name="+$id+" value="+'"'+Json[i].optionsList[v].optionsOption+'"'+" required>"+Json[i].optionsList[v].optionsOption.toString()+"</div></br> ");
                     } } 
 //                //TIPO multiple
                     if(Json[i].questionsIdType.typesId==4) {
@@ -42,7 +42,7 @@ $(document).ready(function() {
                          $("#quest"+i).append("<select class="+'form-control'+" id="+$id+" multiple=true  name="+Json[i].questionsId+" >");
                          
                           for (var v = 0; v < Json[i].optionsList.length; v++) {
-                        $("#"+Json[i].questionsId).append("<option name="+$id+" value="+v+">"+Json[i].optionsList[v].optionsOption+"</option>");
+                        $("#"+Json[i].questionsId).append("<option name="+$id+" value="+'"'+Json[i].optionsList[v].optionsOption+'"'+">"+Json[i].optionsList[v].optionsOption.toString()+"</option>");
                     }
                     $("#quest"+i).append( "</select></div></br> ");
                        }
@@ -51,15 +51,15 @@ $(document).ready(function() {
                  if(Json[i].questionsIdType.typesId==1) {
                      $("#preguntas").append("<div id=quest"+i+" class="+'form-group'+ " ><p class="+'lead'+">"+Json[i].questionsTitle+"</p></br>");
                          
-                        $("#quest"+i).append("<input type="+'text'+" class="+'form-control'+" name="+$id+" ></div></br> ");
+                        $("#quest"+i).append("<input type="+'text'+" class="+'form-control'+" name="+$id+" required></div></br> ");
                     } 
 
                 //TIPO checkbox
                     if(Json[i].questionsIdType.typesId==5) {
-                          $("#preguntas").append("<div id=quest"+i+" class="+'form-group'+ " ><p class="+'lead'+">"+Json[i].questionsTitle+"</p></br>");
+                          $("#preguntas").append("<div id=quest"+i+" class="+'form-group'+  " ><p class="+'lead'+">"+Json[i].questionsTitle+"</p></br>");
                           
                           for (var v = 0; v < Json[i].optionsList.length; v++) {
-                        $("#quest"+i).append("<input type="+'checkbox'+" name="+Json[i].questionsId+" value="+v+">"+Json[i].optionsList[v].optionsOption+"</div></br> ");
+                        $("#quest"+i).append("<input type="+'checkbox'+" name="+Json[i].questionsId+" value="+'"'+Json[i].optionsList[v].optionsOption+'"'+">"+Json[i].optionsList[v].optionsOption.toString()+"</div></br> ");
                     } } 
               
             });
@@ -74,7 +74,7 @@ $("#send").click(function(){
            data: {company:JSON.stringify($("#preguntas").serializeArray())}
            
        });
-
+       $("#send").attr(":disabled","true");
     });
 
         }

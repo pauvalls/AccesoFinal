@@ -23,6 +23,7 @@ import java.io.PrintWriter;
 import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -121,18 +122,24 @@ public class SaveJson extends HttpServlet {
         Userdata userdef = userdata.get(0);
         Userexams exam = new Userexams(userdef.getUserdataId().toString(), new Date(), new Date());
         userexamsFacade.create(exam);
-
+        Questions  quest=null;
+        Userquestions uq = null; 
         for (ParseExam u : pE) {
             Questions q = questionsFacade.find(u.getName());
-            Userquestions uq = new Userquestions();
+            if (!q.equals(quest)) {
+                uq = new Userquestions();
             uq.setUserquestionsIdexam(exam);
             uq.setUserquestionsIdquestion(q);
             userquestionsFacade.create(uq);
+            }
+            
             Useranswers usw = new Useranswers();
             usw.setUseranswersIdquestion(uq);
             usw.setUserquestionsAnswer(u.getValue());
             useranswersFacade.create(usw);
+            quest=q;
         }
+      
     }
 
     /**

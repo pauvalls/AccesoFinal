@@ -8,6 +8,10 @@
         <servlet-name>SaveJson</servlet-name>
         <servlet-class>Servlets.SaveJson</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Correccion</servlet-name>
+        <servlet-class>Servlets.Correccion</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>GetJSON</servlet-name>
         <url-pattern>/GetJSON</url-pattern>
@@ -15,6 +19,10 @@
     <servlet-mapping>
         <servlet-name>SaveJson</servlet-name>
         <url-pattern>/SaveJson</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Correccion</servlet-name>
+        <url-pattern>/Correccion</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
