@@ -15,23 +15,50 @@
         <script src="js/j.js"></script>
     </head>
     <body>
-        <%    ArrayList<RespuestasOBJ> array = (ArrayList<RespuestasOBJ>) request.getAttribute("array");%>
+        <%    ArrayList<RespuestasOBJ> array = (ArrayList<RespuestasOBJ>) request.getAttribute("array");
+        
+        int contrador=0;%>
         <div class="jumbotron text-center">
             <h1>Examen</h1>
-              </div>
+        </div>
         <div class="container">
             <div class="well">
                 <div  class="row" >
-                    <h1>inicio</h1>
-                    
-                    <%=   array.get(0).getPregunta()%>
-                    <h1>final</h1>
+                    <div class="table-responsive">          
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Preguntas</th>
+                                    <th>Respuesta</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% for (int i = 0; i < array.size(); i++) {
+                                        if (array.get(i).getRespuesta() == "Correcta") { contrador++;
+                                %>   <tr class="success" >
+                                    <td><%= array.get(i).getPregunta()%></td>
+                                    <td><%= array.get(i).getRespuesta()%></td>
+                                </tr>
+
+                                <%   } else {%>
+                                <tr class="danger">
+                                    <td><%= array.get(i).getPregunta()%></td>
+                                    <td><%= array.get(i).getRespuesta()%></td>
+                                </tr><%}%>
+
+
+
+                                <%}%>       
+                            </tbody>
+                        </table>
+                    </div>
+                            <h1>nota final <%=contrador %>/10</h1>
                 </div>
             </div>
-            
-           
-             
-            </div>            
-       
+
+
+
+        </div>            
+
     </body>
 </html>
